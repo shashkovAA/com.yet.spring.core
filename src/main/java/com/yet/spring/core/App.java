@@ -21,12 +21,7 @@ public class App {
 		this.loggers = loggers;
 	}
 	
-	/*public void logEvent(String msg) {
-		
-		String message = msg.replaceAll(client.getId(), client.getFullName());
-		eventLogger.logEvent(message);
-	}*/
-	
+
 	public void logEvent(Event event, EventType type) {
 		
 		IEventLogger logger = loggers.get(type);
@@ -39,7 +34,8 @@ public class App {
 		//String message = msg.replaceAll(client.getId(), client.getFullName());
 		//defaultLogger.logEvent(event);
 	}
-	
+
+	// 21.10.2019 Конфигурация Spring с помощью аннотаций
 	public static void main(String[] args) throws InterruptedException {
 		
 		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
