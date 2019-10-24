@@ -1,14 +1,13 @@
 package com.yet.spring.core;
 
-import org.apache.commons.lang3.builder.ToStringBuilder; 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
+@Component
+@PropertySource("classpath:client.properties")
 public class Client {
-
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", fullName=" + fullName + ", greeting=" + greeting + ", hashCode()=" + hashCode()
-				+ "]";
-	}
 
 	private String id;
 	private String fullName;
@@ -24,10 +23,12 @@ public class Client {
 	public String getId() {
 		return id;
 	}
+	@Value("${id}")
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
+	@Value("${greeting}")
 	public void setGreeting(String greating) {
 		this.greeting = greating;
 	}
@@ -35,6 +36,7 @@ public class Client {
 	public String getFullName() {
 		return fullName;
 	}
+	@Value("${name}")
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
@@ -77,6 +79,10 @@ public class Client {
 		return true;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", fullName=" + fullName + ", greeting=" + greeting + ", hashCode()=" + hashCode()
+				+ "]";
+	}
 	
 }
